@@ -10,13 +10,15 @@ import java.util.List;
  * Printer is ment to communicate with the user
  */
 public class Printer implements Displayer {
+    public KeyChecker keychecker;
     /**
      * asking user if he wants to shuffle words or get them sorted by the console
      */
      @Override
      public char shuffleOrSort(){
          System.out.print("Press S for sorting or F for shuffling the sentence");
-         return 'c';
+         keychecker.waitForRightKey();
+         return keychecker.getKeypressed();
      }
     /**
      * prints out result of shuffling or sorting to console 
@@ -30,18 +32,34 @@ public class Printer implements Displayer {
 
 class KeyChecker implements KeyListener {
     
+    private char keypressed;
+    private boolean wasKeyPressed;
+    
+    public char getKeypressed(){
+        return keypressed;
+    }
+    
+    public boolean getWasKeyPressed(){
+        return wasKeyPressed;
+    }
+    
+    public void waitForRightKey(){
+        while(!getWasKeyPressed()) {}
+    }
+    
     @Override
     public void keyTyped(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("'keyTyped not supported yet."); 
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-         char ch = ke.getKeyChar();
+         keypressed = ke.getKeyChar();
+         wasKeyPressed = true;
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("keyReleased not supported yet."); 
     }
 }

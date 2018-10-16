@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app.model;
 
 /**
  *
- * @author Krisu
+ * Shuffler sets words in random positions in sentence or sorts them by first letters
  */
 public class Shuffler {
     

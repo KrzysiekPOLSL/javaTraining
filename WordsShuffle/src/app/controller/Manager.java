@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app.controller;
+
+import app.model.Shuffler;
+import app.view.console.Printer;
 
 /**
  *
- * @author Krisu
+ * Manager is the controller class from MVC, it stands for managing the two others
+ * which Model (handling data) and View (displaying data)
  */
 public class Manager {
-    
+    private Shuffler shuffler;
+    private Printer printer;
 }

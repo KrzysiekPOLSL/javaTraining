@@ -9,6 +9,6 @@ package app.model;
  *
  * @author Krisu
  */
-public class Shuffling {
+public class Shuffler {
     
 }

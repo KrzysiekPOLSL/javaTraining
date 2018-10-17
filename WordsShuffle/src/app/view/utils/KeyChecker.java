@@ -3,6 +3,7 @@ package app.view.utils;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Simple class that realizes taking characters from keyboard
@@ -70,8 +71,8 @@ public class KeyChecker implements KeyListener {
     @Override
     public void keyPressed(KeyEvent ke) {
          keypressed = ke.getKeyChar();
-         for(int i = 0; i<=desiredCharacters.size();i++){
-             if(keypressed == desiredCharacters.get(i)){
+         for(int i = 0; i < desiredCharacters.size(); i++){
+             if(Objects.equals(keypressed, desiredCharacters.get(i))){
                   wasRightKeyPressed = true;
              }
          }

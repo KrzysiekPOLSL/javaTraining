@@ -5,13 +5,12 @@ import app.view.utils.KeyChecker;
 
 
 /**
- *
  * Printer is ment to communicate with the user
  */
 public class Printer implements Displayer {
     private KeyChecker keychecker;
     /**
-     * asking user if he wants to shuffle words or get them sorted by the console
+     * Asking user if he wants to shuffle words or get them sorted by the console
      */
      @Override
      public Character shuffleOrSort(){
@@ -20,10 +19,20 @@ public class Printer implements Displayer {
          return keychecker.getKeyPressed();
      }
     /**
-     * prints out result of shuffling or sorting to console 
+     * Prints out result of shuffling or sorting to console 
+     * @param sentence
      */
      @Override
     public void displayResult(String sentence){
         System.out.print("Changed sentence: " + sentence);    
+    }
+    
+    /**
+     * Notifies user about exception
+     * @param message 
+     */
+    @Override
+    public void displayExceptionMessage(String message) {
+        System.out.print("An exception occoured, message: " + message);
     }
 }

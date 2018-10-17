@@ -11,10 +11,10 @@ public interface Displayer {
      * asking user if he wants to shuffle words or get them sorted
      * @return 
      */
-    public char shuffleOrSort();
+    public Character shuffleOrSort();
     /**
      * prints out result of shuffling or sorting
      * @param words
      */
-    public void displayResult(List<String> words);
+    public void displayResult(String sentence);
 }

@@ -1,5 +1,6 @@
 package app.model;
 
+import app.model.utils.NoSentenceException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
@@ -42,21 +43,4 @@ public class Shuffler {
 }
 
 
-class NoSentenceException extends Exception {
-
-    /**
-     * Non-parameter constructor 
-     */
-    public NoSentenceException() {
-    }
-
-    /**
-     * Constructor
-     *
-     * @param message display message
-     */
-    public NoSentenceException(String message) {
-        super(message);
-    }
-}
 

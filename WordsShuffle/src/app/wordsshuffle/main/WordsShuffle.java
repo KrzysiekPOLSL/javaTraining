@@ -5,6 +5,8 @@
  */
 package app.wordsshuffle.main;
 
+import app.controller.Manager;
+
 /**
  *
  * @author Krisu
@@ -15,7 +17,8 @@ public class WordsShuffle {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Manager manager = new Manager(args, 's', 'f');
+        manager.run();
     }
     
 }

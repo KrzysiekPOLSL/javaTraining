@@ -1,22 +1,31 @@
 package app.view.console;
 
 import app.interfaces.Displayer;
-import app.view.utils.KeyChecker;
+import app.view.utils.ShuffleSelector;
 
 
 /**
  * Printer is ment to communicate with the user
  */
-public class Printer implements Displayer {
-    private KeyChecker keychecker;
+public class ConsolePrinter extends ShuffleSelector implements Displayer {
+    
+    /**
+     *
+     * @param sortingIndicator
+     * @param shufflingIndicator
+     */
+    public ConsolePrinter(Character sortingIndicator, Character shufflingIndicator)
+    {
+       super(sortingIndicator, shufflingIndicator);
+    }
+    
     /**
      * Asking user if he wants to shuffle words or get them sorted by the console
      */
      @Override
      public Character shuffleOrSort(){
-         System.out.print("Press S for sorting or F for shuffling the sentence");
-         keychecker.waitForRightKey();
-         return keychecker.getKeyPressed();
+         System.out.print("Press " + getSortingIndicator() + " for sorting or " + getShufflingIndicator() + " for shuffling the sentence");
+         return waitForRightKeyLoop();
      }
     /**
      * Prints out result of shuffling or sorting to console 

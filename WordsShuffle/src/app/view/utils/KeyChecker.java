@@ -14,7 +14,7 @@ public class KeyChecker implements KeyListener {
      * Constructor takes the list of characters that should be noticed
      * @param desiredCharacters 
      */
-    KeyChecker(List<Character> desiredCharacters)
+    public KeyChecker(List<Character> desiredCharacters)
     {
         this.desiredCharacters = desiredCharacters;
     }

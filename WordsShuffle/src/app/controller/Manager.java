@@ -3,6 +3,7 @@ package app.controller;
 import app.model.Shuffler;
 import app.model.utils.NoSentenceException;
 import app.view.console.ConsolePrinter;
+import java.util.Objects;
 
 /**
  *
@@ -21,15 +22,16 @@ public class Manager {
     {
         this.context = args;
         printer = new ConsolePrinter(sortingIndicator, shufflingIndicator);
+        shuffler = new Shuffler();
     }
     
     public void run(){
-        userDecision = Character.toUpperCase(printer.shuffleOrSort());
+        userDecision = Character.toLowerCase(printer.shuffleOrSort());
         try{
-            if(userDecision == printer.getShufflingIndicator()){
+            if(Objects.equals(userDecision, printer.getShufflingIndicator())){
                 this.sentence = shuffler.shuffleSentence(context);
              }
-            else if(userDecision == printer.getSortingIndicator()){
+            else if(Objects.equals(userDecision, printer.getSortingIndicator())){
                 this.sentence = shuffler.sortSentence(context);
             }
         }

@@ -1,9 +1,9 @@
 package app.model;
 
 import app.model.utils.NoSentenceException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Random;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -19,7 +19,11 @@ public class Shuffler {
     public String sortSentence(String[] sentence) throws NoSentenceException {
         if(sentence.length == 0)
             throw new NoSentenceException("Sentence cannot be empty!");
+        for(int i = 0 ; i < sentence.length ; i++)
+            sentence[i] = sentence[i].toLowerCase();
+      
         Arrays.sort(sentence);
+        sentence[0] = sentence[0].substring(0, 1).toUpperCase() + sentence[0].substring(1);
         return String.join(" ", sentence);
     }
     
@@ -31,14 +35,9 @@ public class Shuffler {
     public String shuffleSentence(String[] sentence) throws NoSentenceException {
         if(sentence.length == 0)
             throw new NoSentenceException("Sentence cannot be empty!");
-        Random random = new Random();
-        for(int i =0; i < sentence.length ; i++){
-            int index = random.nextInt(i + 1);
-            String s = sentence[index];
-            sentence[index] = sentence[i];
-            sentence[i] = s;
-        }
-        return String.join(" ", sentence);
+        List<String> strList = Arrays.asList(sentence);
+        Collections.shuffle(strList);
+        return String.join(" ", strList.toArray(new String[strList.size()]));
     }
 }
 

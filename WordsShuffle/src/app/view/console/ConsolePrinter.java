@@ -2,7 +2,9 @@ package app.view.console;
 
 import app.interfaces.Displayer;
 import app.view.utils.ShuffleSelector;
-
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Printer is ment to communicate with the user
@@ -16,7 +18,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
      */
     public ConsolePrinter(Character sortingIndicator, Character shufflingIndicator)
     {
-       super(sortingIndicator, shufflingIndicator);
+      super(sortingIndicator, shufflingIndicator);
     }
     
     /**
@@ -25,7 +27,15 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
      @Override
      public Character shuffleOrSort(){
          System.out.print("Press " + getSortingIndicator() + " for sorting or " + getShufflingIndicator() + " for shuffling the sentence");
-         return waitForRightKeyLoop();
+         Character result = Character.MAX_VALUE;
+         while(!isCharacterDesired(result)){
+             try {
+                 result = (char) System.in.read();
+             } catch (IOException ex) {
+                 Logger.getLogger(ConsolePrinter.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+         return result;
      }
     /**
      * Prints out result of shuffling or sorting to console 

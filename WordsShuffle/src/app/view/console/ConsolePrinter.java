@@ -3,6 +3,8 @@ package app.view.console;
 import app.interfaces.Displayer;
 import app.view.utils.ShuffleSelector;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,11 +28,12 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
      */
      @Override
      public Character shuffleOrSort(){
-         System.out.print("Press " + getSortingIndicator() + " for sorting or " + getShufflingIndicator() + " for shuffling the sentence");
+         System.out.println("Press " + getSortingIndicator() + " for sorting or " + getShufflingIndicator() + " for shuffling the sentence");
          Character result = Character.MAX_VALUE;
          while(!isCharacterDesired(result)){
              try {
                  result = (char) System.in.read();
+                 Character enterConsumer = (char) System.in.read();
              } catch (IOException ex) {
                  Logger.getLogger(ConsolePrinter.class.getName()).log(Level.SEVERE, null, ex);
              }
@@ -43,7 +46,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
      */
      @Override
     public void displayResult(String sentence){
-        System.out.print("Changed sentence: " + sentence);    
+        System.out.println("Changed sentence: " + sentence);    
     }
     
     /**
@@ -52,6 +55,24 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
      */
     @Override
     public void displayExceptionMessage(String message) {
-        System.out.print("An exception occoured, message: " + message);
+        System.out.println("An exception occoured, message: " + message);
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public String[] askForData() {
+        String[] data = new String[0];
+        String temp = new String();
+        while(data.length == 0){
+            System.out.println("Please write down a sentence and press ENTER");
+            Scanner scanner = new Scanner(System. in);
+            temp = scanner. nextLine();
+            if(!temp.isEmpty())
+                data = temp.split(" ");
+        }
+        return data;
     }
 }

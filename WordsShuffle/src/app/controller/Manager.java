@@ -39,9 +39,26 @@ public class Manager {
         {
             printer.displayExceptionMessage(ex.getMessage());
             wereErrors = true;
-        }
+        } 
        
         if(!wereErrors)
             printer.displayResult(sentence);
+        else {
+            String[] newContext = printer.askForData();
+             try{
+                if(Objects.equals(userDecision, printer.getShufflingIndicator())){
+                    this.sentence = shuffler.shuffleSentence(newContext);
+                 }
+                else if(Objects.equals(userDecision, printer.getSortingIndicator())){
+                    this.sentence = shuffler.sortSentence(newContext);
+                }
+                
+                printer.displayResult(sentence);
+            }
+             catch (NoSentenceException ex){
+                printer.displayExceptionMessage(ex.getMessage());
+            } 
+        }
+            
     }
 }

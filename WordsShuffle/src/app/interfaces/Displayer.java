@@ -19,4 +19,9 @@ public interface Displayer {
      * @param message
      */
     public void displayExceptionMessage(String message);
+    /**
+     * 
+     * @return 
+     */
+    public String[] askForData();
 }

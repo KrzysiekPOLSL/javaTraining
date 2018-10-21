@@ -8,16 +8,19 @@ package app.wordsshuffle.main;
 import app.controller.Manager;
 
 /**
- *
- * @author Krisu
+ * Main calss of the program
+ * 
+ *  @author Krzysztof Poloczek
+ *  @version 1.1
  */
 public class WordsShuffle {
 
     /**
+     * Main method of program
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Manager manager = new Manager(args, 's', 'f');
+        Manager manager = new Manager(args, 's', 'f'); //initializing and running application's manager
         manager.run();
     }
     

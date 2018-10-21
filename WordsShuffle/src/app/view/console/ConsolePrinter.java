@@ -3,18 +3,20 @@ package app.view.console;
 import app.interfaces.Displayer;
 import app.view.utils.ShuffleSelector;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Printer is ment to communicate with the user
+ * 
+ * @author Krzysztof Poloczek
+ * @version 1.1
  */
 public class ConsolePrinter extends ShuffleSelector implements Displayer {
     
     /**
-     *
+     * Constructs printer and initializes ShuffleSelector base class with given indicators
      * @param sortingIndicator
      * @param shufflingIndicator
      */
@@ -24,7 +26,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     }
     
     /**
-     * Asking user if he wants to shuffle words or get them sorted by the console
+     * Asks user if user wants to shuffle words or get them sorted by the console
      */
      @Override
      public Character shuffleOrSort(){
@@ -32,7 +34,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
          Character result = Character.MAX_VALUE;
          while(!isCharacterDesired(result)){
              try {
-                 result = (char) System.in.read();
+                 result = (char) System.in.read(); //getting character from console and cleaning the stream
                  Character enterConsumer = (char) System.in.read();
              } catch (IOException ex) {
                  Logger.getLogger(ConsolePrinter.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,13 +61,13 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     }
     
     /**
-     * 
+     * Loop that waits untill user provides not empty data
      * @return 
      */
     @Override
     public String[] askForData() {
         String[] data = new String[0];
-        String temp = new String();
+        String temp = new String(); //temporary string for user input
         while(data.length == 0){
             System.out.println("Please write down a sentence and press ENTER");
             Scanner scanner = new Scanner(System. in);

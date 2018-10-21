@@ -6,18 +6,32 @@ import app.view.console.ConsolePrinter;
 import java.util.Objects;
 
 /**
- *
  * Manager is the controller class from MVC, it stands for managing the two others
  * which are Model (handling data) and View (displaying data)
+ * 
+ * @author Krzysztof Poloczek
+ * @version 1.1
  */
 public class Manager {
+    /** Data that is provided to program */
     private String[] context;
+    /** users decision if sort or shuffle */
     private Character userDecision;
+    /** object that handles computions */
     private Shuffler shuffler;
+    /** object that is to communicate with user */
     private ConsolePrinter printer;
+    /** sentence is the result of computing */
     private String sentence;
+    /** true if caught an exception */
     private boolean wereErrors;
     
+    /**
+     * Constructor takesinput data and initializes objects
+     * @param args
+     * @param sortingIndicator
+     * @param shufflingIndicator 
+     */
     public Manager(String[] args, Character sortingIndicator, Character shufflingIndicator)
     {
         this.context = args;
@@ -25,8 +39,11 @@ public class Manager {
         shuffler = new Shuffler();
     }
     
+    /**
+     * core of the manager, handles information exchange btween model and view
+     */
     public void run(){
-        userDecision = Character.toLowerCase(printer.shuffleOrSort());
+        userDecision = Character.toLowerCase(printer.shuffleOrSort()); //scan users decision
         try{
             if(Objects.equals(userDecision, printer.getShufflingIndicator())){
                 this.sentence = shuffler.shuffleSentence(context);
@@ -37,27 +54,22 @@ public class Manager {
         }
         catch (NoSentenceException ex)
         {
-            printer.displayExceptionMessage(ex.getMessage());
+            printer.displayExceptionMessage(ex.getMessage()); //provided data was empty
             wereErrors = true;
         } 
        
-        if(!wereErrors)
+        if(!wereErrors) //normal workflow
             printer.displayResult(sentence);
         else {
-            String[] newContext = printer.askForData();
-             try{
-                if(Objects.equals(userDecision, printer.getShufflingIndicator())){
-                    this.sentence = shuffler.shuffleSentence(newContext);
-                 }
-                else if(Objects.equals(userDecision, printer.getSortingIndicator())){
-                    this.sentence = shuffler.sortSentence(newContext);
-                }
+            String[] newContext = printer.askForData(); //loop until user inserts any data
+            if(Objects.equals(userDecision, printer.getShufflingIndicator())){
+                this.sentence = shuffler.shuffleSentenceUnsafe(newContext);
+            }
+            else if(Objects.equals(userDecision, printer.getSortingIndicator())){
+                this.sentence = shuffler.sortSentenceUnsafe(newContext);
                 
                 printer.displayResult(sentence);
             }
-             catch (NoSentenceException ex){
-                printer.displayExceptionMessage(ex.getMessage());
-            } 
         }
             
     }

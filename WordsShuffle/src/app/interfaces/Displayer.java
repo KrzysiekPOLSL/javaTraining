@@ -2,6 +2,9 @@ package app.interfaces;
 
 /**
  * Interface Displayer takes care of communication with user
+ * 
+ * @author Krzysztof Poloczek
+ * @version 1.1
  */
 public interface Displayer {
     /**
@@ -20,7 +23,7 @@ public interface Displayer {
      */
     public void displayExceptionMessage(String message);
     /**
-     * 
+     * Loop that waits for user to input any data
      * @return 
      */
     public String[] askForData();

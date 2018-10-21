@@ -1,3 +1,6 @@
+/**
+ * Controlling the data flow in the program
+ */
 package app.controller;
 
 import app.model.Shuffler;
@@ -15,7 +18,7 @@ import java.util.Objects;
 public class Manager {
     /** Data that is provided to program */
     private String[] context;
-    /** users decision if sort or shuffle */
+    /** user desicion - sort or shuffle */
     private Character userDecision;
     /** object that handles computions */
     private Shuffler shuffler;
@@ -27,7 +30,7 @@ public class Manager {
     private boolean wereErrors;
     
     /**
-     * Constructor takesinput data and initializes objects
+     * Constructor takes input data and initializes objects
      * @param args
      * @param sortingIndicator
      * @param shufflingIndicator 
@@ -40,7 +43,7 @@ public class Manager {
     }
     
     /**
-     * core of the manager, handles information exchange btween model and view
+     * core of the manager, handles information exchange between model and view
      */
     public void run(){
         userDecision = Character.toLowerCase(printer.shuffleOrSort()); //scan users decision

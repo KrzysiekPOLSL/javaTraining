@@ -1,3 +1,6 @@
+/**
+ * Utils for model elements
+ */
 package app.model.utils;
 
 /**

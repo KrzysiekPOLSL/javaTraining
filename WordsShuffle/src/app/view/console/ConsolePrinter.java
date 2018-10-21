@@ -1,3 +1,6 @@
+/**
+ * Console type of interface
+ */
 package app.view.console;
 
 import app.interfaces.Displayer;
@@ -26,7 +29,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     }
     
     /**
-     * Asks user if user wants to shuffle words or get them sorted by the console
+     * Asks if user wants to shuffle words or get them sorted by the console
      */
      @Override
      public Character shuffleOrSort(){

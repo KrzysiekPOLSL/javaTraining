@@ -1,3 +1,6 @@
+/**
+ * All program interfaces
+ */
 package app.interfaces;
 
 /**

@@ -1,3 +1,6 @@
+/**
+ * Tools for view elements
+ */
 package app.view.utils;
 
 /**

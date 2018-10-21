@@ -1,3 +1,6 @@
+/**
+ * Computing data
+ */
 package app.model;
 
 import app.model.utils.NoSentenceException;

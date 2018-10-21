@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Main program
  */
 package app.wordsshuffle.main;
 
 import app.controller.Manager;
 
 /**
- * Main calss of the program
+ * Main class of the program
  * 
  *  @author Krzysztof Poloczek
  *  @version 1.1

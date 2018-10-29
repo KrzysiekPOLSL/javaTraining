@@ -70,7 +70,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     @Override
     public String[] askForData() {
         String[] data = new String[0];
-        String temp = new String(); //temporary string for user input
+        String temp; //temporary string for user input
         while(data.length == 0){
             System.out.println("Please write down a sentence and press ENTER");
             Scanner scanner = new Scanner(System. in);

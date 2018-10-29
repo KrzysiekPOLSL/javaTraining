@@ -69,10 +69,9 @@ public class Manager {
                 this.sentence = shuffler.shuffleSentenceUnsafe(newContext);
             }
             else if(Objects.equals(userDecision, printer.getSortingIndicator())){
-                this.sentence = shuffler.sortSentenceUnsafe(newContext);
-                
-                printer.displayResult(sentence);
+                this.sentence = shuffler.sortSentenceUnsafe(newContext);   
             }
+             printer.displayResult(sentence);
         }
             
     }

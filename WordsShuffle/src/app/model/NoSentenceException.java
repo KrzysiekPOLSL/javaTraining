@@ -1,7 +1,7 @@
 /**
  * Utils for model elements
  */
-package app.model.utils;
+package app.model;
 
 /**
  * Exception occurs when provided data is empty

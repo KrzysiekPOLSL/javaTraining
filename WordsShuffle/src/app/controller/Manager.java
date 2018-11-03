@@ -3,8 +3,7 @@
  */
 package app.controller;
 
-import app.model.Shuffler;
-import app.model.utils.NoSentenceException;
+import app.model.*;
 import app.view.console.ConsolePrinter;
 import java.util.Objects;
 

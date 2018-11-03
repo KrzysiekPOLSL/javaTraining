@@ -39,7 +39,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
          while(!isCharacterDesired(result)){
              try {
                  result = (char) System.in.read(); //getting character from console and cleaning the stream
-                 Character enterConsumer = (char) System.in.read();
+                 System.in.read(); //consuming endline character
              } catch (IOException ex) {
                  Logger.getLogger(ConsolePrinter.class.getName()).log(Level.SEVERE, null, ex);
              }

@@ -11,7 +11,7 @@ import java.util.List;
  * Shuffler sets words in random positions in sentence or sorts them by first letters
  * 
  * @author Krzysztof Poloczek
- * @version 1.1
+ * @version 1.2
  */
 public class Shuffler {
     
@@ -19,7 +19,7 @@ public class Shuffler {
       * Safe method that sorts the provided sentence by first letter of each word
       * @param sentence Data that will be sorted
       * @return Sorted data
-     * @throws app.model.utils.NoSentenceException Exception that occurs when there is no data
+     * @throws app.model.NoSentenceException Exception that occurs when there is no data
       */
     public String sortSentence(String[] sentence) throws NoSentenceException {
         if(sentence.length == 0)
@@ -45,7 +45,7 @@ public class Shuffler {
      * Safe method that randomly shuffles the provided sentence
      * @param sentence Data that will be shufled
      * @return Shuffled data
-     * @throws app.model.utils.NoSentenceException Exception that occurs when there is no data
+     * @throws app.model.NoSentenceException Exception that occurs when there is no data
      */
     public String shuffleSentence(String[] sentence) throws NoSentenceException {
         if(sentence.length == 0)

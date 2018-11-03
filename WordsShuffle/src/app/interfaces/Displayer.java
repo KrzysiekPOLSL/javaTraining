@@ -7,7 +7,7 @@ package app.interfaces;
  * Interface Displayer takes care of communication with user
  * 
  * @author Krzysztof Poloczek
- * @version 1.1
+ * @version 1.2
  */
 public interface Displayer {
     /**

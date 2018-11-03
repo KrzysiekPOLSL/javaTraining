@@ -7,7 +7,7 @@ package app.view.utils;
  * Utility that handles managing characters that indicates choice
  * 
  * @author Krzysztof Poloczek
- * @version 1.1
+ * @version 1.2
  */
 public class ShuffleSelector {
     

@@ -7,7 +7,7 @@ package app.model;
  * Exception occurs when provided data is empty
  * 
  * @author Krzysztof Poloczek
- * @version 1.1
+ * @version 1.2
  */
 public class NoSentenceException extends Exception {
 

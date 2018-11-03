@@ -12,7 +12,7 @@ import java.util.Objects;
  * which are Model (handling data) and View (displaying data)
  * 
  * @author Krzysztof Poloczek
- * @version 1.1
+ * @version 1.2
  */
 public class Manager {
     /** Data that is provided to program */

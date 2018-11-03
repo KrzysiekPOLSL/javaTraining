@@ -11,14 +11,14 @@ package app.view.utils;
  */
 public class ShuffleSelector {
     
-    /**
-     * Choice indicators
-     */
-    private Character sortingIndicator, shufflingIndicator;
+    /*Character that indicates sorting operation*/
+    private Character sortingIndicator;
+    /*Character that indicates shuffling operation*/
+    private Character shufflingIndicator;
     
     /**
      * Getter for sortingIndicator
-     * @return
+     * @return Value of sortingIndicator
      */
     public Character getSortingIndicator(){
         return sortingIndicator;
@@ -26,7 +26,7 @@ public class ShuffleSelector {
     
     /**
      * Getter for shufflingIndicator
-     * @return
+     * @return Value of shufflingIndicator
      */
     public Character getShufflingIndicator(){
         return shufflingIndicator;
@@ -34,8 +34,8 @@ public class ShuffleSelector {
     
     /**
      * Constructor that initializes indicators
-     * @param sortingIndicator
-     * @param shufflingIndicator 
+     * @param sortingIndicator Character that indicates sorting operation
+     * @param shufflingIndicator Character that indicates shuffling operation
      */
     public ShuffleSelector(Character sortingIndicator, Character shufflingIndicator)
     {
@@ -45,8 +45,8 @@ public class ShuffleSelector {
     
     /**
      * Checks if given parameter matches one of the indicators
-     * @param ch
-     * @return 
+     * @param ch The character given by user
+     * @return Boolean value if the character is essential
      */
     public boolean isCharacterDesired(Character ch){
         return ch.equals(shufflingIndicator) | ch.equals(sortingIndicator);

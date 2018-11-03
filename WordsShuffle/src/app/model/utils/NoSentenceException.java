@@ -20,7 +20,7 @@ public class NoSentenceException extends Exception {
     /**
      * Constructor
      *
-     * @param message display message
+     * @param message Message that will be displayed
      */
     public NoSentenceException(String message) {
         super(message);

@@ -12,22 +12,22 @@ package app.interfaces;
 public interface Displayer {
     /**
      * Asking user if he wants to shuffle words or get them sorted
-     * @return 
+     * @return The intention of user wether to sort of shuffle
      */
     public Character shuffleOrSort();
     /**
-     * Prints out result of shuffling or sorting
-     * @param sentence
+     * Prints Out result of shuffling or sorting
+     * @param sentence Parameter that needs to be printed
      */
     public void displayResult(String sentence);
     /**
      * Prints out exception message
-     * @param message
+     * @param message Message that will be printed
      */
     public void displayExceptionMessage(String message);
     /**
      * Loop that waits for user to input any data
-     * @return 
+     * @return Data given by user
      */
     public String[] askForData();
 }

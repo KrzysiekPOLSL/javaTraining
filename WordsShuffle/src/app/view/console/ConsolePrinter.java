@@ -20,8 +20,8 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     
     /**
      * Constructs printer and initializes ShuffleSelector base class with given indicators
-     * @param sortingIndicator
-     * @param shufflingIndicator
+     * @param sortingIndicator Character that indicates sorting operation
+     * @param shufflingIndicator Character that indicates shuffling operation
      */
     public ConsolePrinter(Character sortingIndicator, Character shufflingIndicator)
     {
@@ -30,6 +30,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     
     /**
      * Asks if user wants to shuffle words or get them sorted by the console
+     * @return The intention of user wether to sort of shuffle
      */
      @Override
      public Character shuffleOrSort(){
@@ -47,7 +48,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
      }
     /**
      * Prints out result of shuffling or sorting to console 
-     * @param sentence
+     * @param sentence Parameter that needs to be printed
      */
      @Override
     public void displayResult(String sentence){
@@ -56,7 +57,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     
     /**
      * Notifies user about exception
-     * @param message 
+     * @param message Message that will be printed
      */
     @Override
     public void displayExceptionMessage(String message) {
@@ -65,7 +66,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
     
     /**
      * Loop that waits untill user provides not empty data
-     * @return 
+     * @return Data given by user
      */
     @Override
     public String[] askForData() {

@@ -18,22 +18,22 @@ import java.util.Objects;
 public class Manager {
     /** Data that is provided to program */
     private String[] context;
-    /** user desicion - sort or shuffle */
+    /** User desicion - sort or shuffle */
     private Character userDecision;
-    /** object that handles computions */
+    /** Object that handles computions */
     private Shuffler shuffler;
-    /** object that is to communicate with user */
+    /** Object that is to communicate with user */
     private ConsolePrinter printer;
-    /** sentence is the result of computing */
+    /** Sentence is the result of computing */
     private String sentence;
-    /** true if caught an exception */
+    /** True if caught an exception */
     private boolean wereErrors;
     
     /**
      * Constructor takes input data and initializes objects
-     * @param args
-     * @param sortingIndicator
-     * @param shufflingIndicator 
+     * @param args Sentence to be processed 
+     * @param sortingIndicator Character that indicates sorting operation
+     * @param shufflingIndicator Character that indicates shuffling operation
      */
     public Manager(String[] args, Character sortingIndicator, Character shufflingIndicator)
     {
@@ -43,7 +43,7 @@ public class Manager {
     }
     
     /**
-     * core of the manager, handles information exchange between model and view
+     * Core of the manager, handles information exchange between model and view
      */
     public void run(){
         userDecision = Character.toLowerCase(printer.shuffleOrSort()); //scan users decision

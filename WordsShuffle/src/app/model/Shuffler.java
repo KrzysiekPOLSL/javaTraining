@@ -18,9 +18,9 @@ public class Shuffler {
     
      /**
       * Safe method that sorts the provided sentence by first letter of each word
-      * @param sentence
-      * @return 
-     * @throws app.model.utils.NoSentenceException 
+      * @param sentence Data that will be sorted
+      * @return Sorted data
+     * @throws app.model.utils.NoSentenceException Exception that occurs when there is no data
       */
     public String sortSentence(String[] sentence) throws NoSentenceException {
         if(sentence.length == 0)
@@ -30,8 +30,8 @@ public class Shuffler {
     
     /**
      * Unsafe version of sortSentence member function, has use only if provided data is not empty
-     * @param sentence
-     * @return 
+     * @param sentence Data that will by sorted
+     * @return Sorted data
      */
     public String sortSentenceUnsafe(String[] sentence){
         for(int i = 0 ; i < sentence.length ; i++)
@@ -44,9 +44,9 @@ public class Shuffler {
     
     /**
      * Safe method that randomly shuffles the provided sentence
-     * @param sentence
-     * @return 
-     * @throws app.model.utils.NoSentenceException 
+     * @param sentence Data that will be shufled
+     * @return Shuffled data
+     * @throws app.model.utils.NoSentenceException Exception that occurs when there is no data
      */
     public String shuffleSentence(String[] sentence) throws NoSentenceException {
         if(sentence.length == 0)
@@ -56,8 +56,8 @@ public class Shuffler {
     
     /**
      * Unsafe version of shuffleSentence member function, has use only if provided data is not empty
-     * @param sentence
-     * @return 
+     * @param sentence Data that will be shufled
+     * @return Shuffled data
      */
     public String shuffleSentenceUnsafe(String[] sentence){
         List<String> strList = Arrays.asList(sentence);

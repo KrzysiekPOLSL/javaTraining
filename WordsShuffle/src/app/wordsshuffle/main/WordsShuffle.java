@@ -15,7 +15,7 @@ public class WordsShuffle {
 
     /**
      * Main method of program
-     * @param args the command line arguments
+     * @param args The command line arguments
      */
     public static void main(String[] args) {
         Manager manager = new Manager(args, 's', 'f'); //initializing and running application's manager

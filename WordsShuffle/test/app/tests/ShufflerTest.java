@@ -146,5 +146,4 @@ public class ShufflerTest {
             assertEquals("Variable values ​​are not the same!", s, shuffler.shuffleSentenceUnsafe(sentence));
         }
     }
- 
 }

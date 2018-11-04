@@ -38,7 +38,7 @@ public class Shuffler {
         
         List<String> strList = Arrays.asList(sentence);
         Collections.sort(strList); //sorting
-        if(sentence[0].length() > 0)
+        if(sentence.length > 0 && sentence[0].length() > 0)
             sentence[0] = sentence[0].substring(0, 1).toUpperCase() + sentence[0].substring(1); //adding uppercase to the first letter of the sentence
         return String.join(" ", strList.toArray(new String[strList.size()])); //converting list to string
     }
@@ -66,7 +66,7 @@ public class Shuffler {
         
         List<String> strList = Arrays.asList(sentence);
         Collections.shuffle(strList); //shuffling sentence
-        if(sentence[0].length() > 0)
+        if(sentence.length > 0 && sentence[0].length() > 0)
             sentence[0] = sentence[0].substring(0, 1).toUpperCase() + sentence[0].substring(1); //adding uppercase to the first letter of the sentence
         return String.join(" ", strList.toArray(new String[strList.size()])); //converting list to string
     }

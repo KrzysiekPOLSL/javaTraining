@@ -35,10 +35,11 @@ public class Shuffler {
     public String sortSentenceUnsafe(String[] sentence){
         for(int i = 0 ; i < sentence.length ; i++)
             sentence[i] = sentence[i].toLowerCase(); //lowercase all sentence
-      
-        Arrays.sort(sentence); //sorting
+        
+        List<String> strList = Arrays.asList(sentence);
+        Collections.sort(strList); //sorting
         sentence[0] = sentence[0].substring(0, 1).toUpperCase() + sentence[0].substring(1); //adding uppercase to the first letter of the sentence
-        return String.join(" ", sentence); //converting array yo string
+        return String.join(" ", strList.toArray(new String[strList.size()])); //converting list yo string
     }
     
     /**
@@ -59,8 +60,12 @@ public class Shuffler {
      * @return Shuffled data
      */
     public String shuffleSentenceUnsafe(String[] sentence){
+        for(int i = 0 ; i < sentence.length ; i++)
+            sentence[i] = sentence[i].toLowerCase(); //lowercase all sentence
+        
         List<String> strList = Arrays.asList(sentence);
         Collections.shuffle(strList); //shuffling sentence
+        sentence[0] = sentence[0].substring(0, 1).toUpperCase() + sentence[0].substring(1); //adding uppercase to the first letter of the sentence
         return String.join(" ", strList.toArray(new String[strList.size()])); //converting list to string
     }
 }

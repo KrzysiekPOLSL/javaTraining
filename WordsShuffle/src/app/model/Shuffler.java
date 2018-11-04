@@ -11,7 +11,7 @@ import java.util.List;
  * Shuffler sets words in random positions in sentence or sorts them by first letters
  * 
  * @author Krzysztof Poloczek
- * @version 1.2
+ * @version 2.1
  */
 public class Shuffler {
     

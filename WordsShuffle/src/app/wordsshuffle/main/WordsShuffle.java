@@ -9,7 +9,7 @@ import app.controller.Manager;
  * Main class of the program
  * 
  *  @author Krzysztof Poloczek
- *  @version 1.2
+ *  @version 2.1
  */
 public class WordsShuffle {
 

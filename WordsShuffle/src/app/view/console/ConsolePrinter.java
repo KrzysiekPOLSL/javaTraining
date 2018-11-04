@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * Printer is ment to communicate with the user
  * 
  * @author Krzysztof Poloczek
- * @version 1.2
+ * @version 2.1
  */
 public class ConsolePrinter extends ShuffleSelector implements Displayer {
     

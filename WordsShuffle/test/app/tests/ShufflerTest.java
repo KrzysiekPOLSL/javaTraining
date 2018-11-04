@@ -17,6 +17,10 @@ import static org.junit.Assert.fail;
  */
 public class ShufflerTest {
     
+    
+    Shuffler shuffler = new Shuffler();
+   
+    
     /**
      * Makes sentence from given set of strings
      * 
@@ -27,8 +31,9 @@ public class ShufflerTest {
         return words;
     }
 
-    Shuffler shuffler = new Shuffler();
-   
+    /**
+     * Testing empty sentence case
+     */
     @Test
     public void testEmptySafeSort() {
          try{
@@ -41,6 +46,9 @@ public class ShufflerTest {
          }
     }
     
+    /**
+     * Testing empty sentence case
+     */
     @Test
     public void testEmptySafeShuffle() {
          try{
@@ -53,16 +61,25 @@ public class ShufflerTest {
          }
     }
     
+    /**
+     * Testing empty sentence case
+     */
     @Test
     public void testEmptyUnsafeShuffle() {
         assertEquals("Variable values ​​are not the same!","",shuffler.shuffleSentenceUnsafe(new String[0]));
     }
     
+    /**
+     * Testing empty sentence case
+     */
     @Test
     public void testEmptyUnsafeSort() {
         assertEquals("Variable values ​​are not the same!","",shuffler.sortSentenceUnsafe(new String[0]));
     }
     
+    /**
+     * Testing all cases pf shuffling sentence
+     */
     @Test
     public void testAfterShuffleResult() throws NoSentenceException {
         String[] sentence = makeSentence("A", "b", "c");
@@ -90,6 +107,9 @@ public class ShufflerTest {
         );
     }
     
+    /**
+     * Testing if sorting is working
+     */
     @Test
     public void testSameAfterSort() throws NoSentenceException {
         String[] sentence = makeSentence("C", "b", "a");
@@ -98,6 +118,9 @@ public class ShufflerTest {
         assertEquals("Variable values ​​are not the same!","A b c",shuffler.sortSentence(sentence));
     }
     
+    /**
+     * Testing if sorting is working
+     */
      @Test
     public void testNotSameAfterSort() throws NoSentenceException {
         String[] sentence = makeSentence("C", "b", "a");
@@ -106,6 +129,9 @@ public class ShufflerTest {
         assertNotEquals("Variable values ​​are the same!","C b a",shuffler.sortSentence(sentence));
     }
     
+    /**
+     * Testing handling situation when there is only space
+     */
     @Test
     public void testSpaceOnly() throws NoSentenceException {
         String[] sentence = {" "};
@@ -118,6 +144,9 @@ public class ShufflerTest {
         assertEquals("Variable values ​​are not the same!"," ",shuffler.shuffleSentence(sentence));
     }
     
+    /**
+     * Testing handling one character
+     */
      @Test
     public void testOneCharacter() throws NoSentenceException {
         String[][] sentences;

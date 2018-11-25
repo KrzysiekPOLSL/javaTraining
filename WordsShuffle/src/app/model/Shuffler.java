@@ -22,7 +22,7 @@ public class Shuffler {
      * @throws app.model.NoSentenceException Exception that occurs when there is no data
       */
     public String sortSentence(String[] sentence) throws NoSentenceException {
-        if(sentence.length == 0)
+        if((sentence == null)||(sentence.length == 0))
             throw new NoSentenceException("Sentence cannot be empty!");
         return sortSentenceUnsafe(sentence);
     }
@@ -50,7 +50,7 @@ public class Shuffler {
      * @throws app.model.NoSentenceException Exception that occurs when there is no data
      */
     public String shuffleSentence(String[] sentence) throws NoSentenceException {
-        if(sentence.length == 0)
+        if((sentence == null)||(sentence.length == 0))
             throw new NoSentenceException("Sentence cannot be empty!");
         return shuffleSentenceUnsafe(sentence);
     }

@@ -42,7 +42,6 @@ public class ShufflerTest {
          }
          catch(NoSentenceException e)
          {
-             System.out.println(e.toString());
          }
     }
     
@@ -57,7 +56,6 @@ public class ShufflerTest {
          }
          catch(NoSentenceException e)
          {
-             System.out.println(e.toString());
          }
     }
     
@@ -79,6 +77,7 @@ public class ShufflerTest {
     
     /**
      * Testing all cases pf shuffling sentence
+     * @throws app.model.NoSentenceException
      */
     @Test
     public void testAfterShuffleResult() throws NoSentenceException {
@@ -109,6 +108,7 @@ public class ShufflerTest {
     
     /**
      * Testing if sorting is working
+     * @throws app.model.NoSentenceException
      */
     @Test
     public void testSameAfterSort() throws NoSentenceException {
@@ -120,6 +120,7 @@ public class ShufflerTest {
     
     /**
      * Testing if sorting is working
+     * @throws app.model.NoSentenceException
      */
      @Test
     public void testNotSameAfterSort() throws NoSentenceException {
@@ -131,6 +132,7 @@ public class ShufflerTest {
     
     /**
      * Testing handling situation when there is only space
+     * @throws app.model.NoSentenceException
      */
     @Test
     public void testSpaceOnly() throws NoSentenceException {
@@ -146,6 +148,7 @@ public class ShufflerTest {
     
     /**
      * Testing handling one character
+     * @throws app.model.NoSentenceException
      */
      @Test
     public void testOneCharacter() throws NoSentenceException {
@@ -174,5 +177,24 @@ public class ShufflerTest {
             assertEquals("Variable values ​​are not the same!", s, shuffler.shuffleSentenceUnsafe(sentence));
             assertEquals("Variable values ​​are not the same!", s, shuffler.shuffleSentenceUnsafe(sentence));
         }
+    }
+    
+     @Test
+    public void testNullReference(){
+        String[] sentence = null;
+        
+        try
+        {
+           String shuffleSentence = shuffler.shuffleSentence(sentence);
+           fail("An exception should be thrown when the sentence is null");
+        }
+        catch(NoSentenceException ex) {}
+         try
+        {
+           String sortSentence = shuffler.sortSentence(sentence);
+           fail("An exception should be thrown when the sentence is null");
+        }
+        catch(NoSentenceException ex) {}
+        
     }
 }

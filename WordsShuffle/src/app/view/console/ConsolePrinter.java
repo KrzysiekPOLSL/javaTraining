@@ -61,7 +61,7 @@ public class ConsolePrinter extends ShuffleSelector implements Displayer {
      */
     @Override
     public void displayExceptionMessage(String message) {
-        System.out.println("An exception occoured, message: " + message);
+        System.err.println("An exception occoured, message: " + message);
     }
     
     /**

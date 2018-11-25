@@ -6,6 +6,7 @@ package app.model;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Shuffler sets words in random positions in sentence or sorts them by first letters
@@ -35,7 +36,7 @@ public class Shuffler {
     public String sortSentenceUnsafe(String[] sentence){
         for(int i = 0 ; i < sentence.length ; i++)
             sentence[i] = sentence[i].toLowerCase(); //lowercase all sentence
-        
+         
         List<String> strList = Arrays.asList(sentence);
         Collections.sort(strList); //sorting
         if(sentence.length > 0 && sentence[0].length() > 0)

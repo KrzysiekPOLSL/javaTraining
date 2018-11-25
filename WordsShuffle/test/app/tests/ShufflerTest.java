@@ -179,22 +179,23 @@ public class ShufflerTest {
         }
     }
     
+    /**
+     * Test checking handling of the null references
+     */
      @Test
     public void testNullReference(){
         String[] sentence = null;
-        
         try
         {
-           String shuffleSentence = shuffler.shuffleSentence(sentence);
+           shuffler.shuffleSentence(sentence);
            fail("An exception should be thrown when the sentence is null");
         }
         catch(NoSentenceException ex) {}
          try
         {
-           String sortSentence = shuffler.sortSentence(sentence);
+           shuffler.sortSentence(sentence);
            fail("An exception should be thrown when the sentence is null");
         }
         catch(NoSentenceException ex) {}
-        
     }
 }

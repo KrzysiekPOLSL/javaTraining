@@ -31,3 +31,6 @@ hs_err_pid*
 *.mf
 /WordsShuffle/build/
 /WordsShuffle/dist/
+/WordsShuffleServerApp/nbproject/private/
+/WordsShuffleServerApp/build/
+/WordsShuffleServerApp/dist/

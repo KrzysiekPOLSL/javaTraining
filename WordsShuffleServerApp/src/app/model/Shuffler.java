@@ -6,7 +6,6 @@ package app.model;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Shuffler sets words in random positions in sentence or sorts them by first letters

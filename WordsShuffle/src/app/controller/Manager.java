@@ -7,20 +7,22 @@ import app.client.WordsShuffleClient;
 import app.view.console.ConsolePrinter;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Manager is the controller class from MVC, it stands for managing the two others
  * which are Model (handling data) and View (displaying data)
  * 
  * @author Krzysztof Poloczek
- * @version 2.1
+ * @version 3.1
  */
 public class Manager {
     /** Data that is provided to program */
     private String[] context;
     /** User desicion - sort or shuffle */
     private Character userDecision;
-    /** Object that handles computions */
+    /** Object that handles communication with server */
     private WordsShuffleClient connector;
     /** Object that is to communicate with user */
     private ConsolePrinter printer;
@@ -94,8 +96,13 @@ public class Manager {
         try {
             connector.send("quit");
         } catch (IOException ex) {
-           printer.displayExceptionMessage(ex.getMessage());
+          
         }
-            
+        
+        try {
+            connector.close();
+        } catch (IOException ex) {
+             printer.displayExceptionMessage(ex.getMessage());
+        }
     }
 }

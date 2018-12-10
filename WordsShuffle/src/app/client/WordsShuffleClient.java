@@ -67,7 +67,7 @@ public class WordsShuffleClient implements Closeable {
             Socket.close();
             /* initialization */
             properties = new Properties();
-            properties.setProperty("port", Integer.toString(Socket.getLocalPort()));
+            properties.setProperty("port", Integer.toString(Socket.getPort()));
             properties.setProperty("address", Socket.getInetAddress().getHostAddress());
             
             /* writing properties into xml file*/
@@ -76,11 +76,22 @@ public class WordsShuffleClient implements Closeable {
         }
     }
     
+    /**
+     * Sends string to server
+     * @param s string that is ment to be sent
+     * @return server acknowledge
+     * @throws IOException 
+     */
     public String send(String s) throws IOException {
         out.println(s);
         return in.readLine();
     }
     
+    /**
+     * Gets the answer from server
+     * @return answer from server
+     * @throws IOException 
+     */
     public String getAnswer() throws IOException{
         return in.readLine();
     }

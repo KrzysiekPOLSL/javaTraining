@@ -96,7 +96,7 @@ public class Manager {
         try {
             connector.send("quit");
         } catch (IOException ex) {
-          
+          printer.displayExceptionMessage(ex.getMessage());
         }
         
         try {

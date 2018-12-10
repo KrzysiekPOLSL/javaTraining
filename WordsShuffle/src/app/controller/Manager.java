@@ -52,14 +52,25 @@ public class Manager {
      * Core of the manager, handles information exchange between model and view
      */
     public void run(){
+        String acknowledge; //control String
         try {
-            connector.send("Hi");
+            acknowledge = connector.send("Hi");
+            if(!acknowledge.contains("Hi")){
+                printer.displayExceptionMessage("Serwer not answering correctly! " + acknowledge);
+                return;
+            }
+            connector.getAnswer();
         } catch (IOException ex) {
             printer.displayExceptionMessage(ex.getMessage());
         }
         userDecision = Character.toLowerCase(printer.shuffleOrSort()); //scan users decision
         try{
-           connector.send(userDecision.toString());
+           acknowledge = connector.send(userDecision.toString());
+           if(!acknowledge.contains(userDecision.toString())){
+                printer.displayExceptionMessage("Serwer not answering correctly! " + acknowledge);
+                return;
+           }
+           connector.getAnswer();
         }
         catch (IOException ex)
         {
@@ -70,7 +81,12 @@ public class Manager {
             this.context = printer.askForData();
         
         try {
-            printer.displayResult(connector.send(String.join((" "),this.context)));
+            acknowledge = connector.send(String.join((" "),this.context));
+            if(!acknowledge.contains(String.join((" "),this.context))){
+                printer.displayExceptionMessage("Serwer not answering correctly! " + acknowledge);
+                return;
+           }
+            printer.displayResult(connector.getAnswer());
         } catch (IOException ex) {
             printer.displayExceptionMessage(ex.getMessage());
         }

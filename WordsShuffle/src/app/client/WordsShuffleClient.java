@@ -78,7 +78,6 @@ public class WordsShuffleClient implements Closeable {
     
     public String send(String s) throws IOException {
         out.println(s);
-        in.readLine(); //server acknowlegde message only for debugging
         return in.readLine();
     }
     

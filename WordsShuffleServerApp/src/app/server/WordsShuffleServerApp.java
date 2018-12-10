@@ -5,8 +5,6 @@ import app.model.Shuffler;
 import java.net.*;
 import java.io.*;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * The main class of the server
@@ -38,7 +36,7 @@ public class WordsShuffleServerApp implements Closeable {
      */
     WordsShuffleServerApp() throws IOException {
         /* reading properties from xml file*/
-        try (FileInputStream in = new FileInputStream("properties.xml")) {
+        try (FileInputStream in = new FileInputStream("server_properties.xml")) {
             properties.loadFromXML(in);
             PORT = Integer.parseInt(properties.getProperty("port"));
         } catch (IOException e) {
@@ -70,6 +68,10 @@ public class WordsShuffleServerApp implements Closeable {
         }
     }
 
+    /**
+     * Closes server session
+     * @throws IOException 
+     */
     @Override
     public void close() throws IOException {
         if (serverSocket != null) {
@@ -79,8 +81,8 @@ public class WordsShuffleServerApp implements Closeable {
             properties.setProperty("port", Integer.toString(serverSocket.getLocalPort()));
             
             /* writing properties into xml file*/
-            try (FileOutputStream out = new FileOutputStream("properties.xml")) {
-                properties.storeToXML(out, "--Konfiguracja--");
+            try (FileOutputStream out = new FileOutputStream("server_properties.xml")) {
+                properties.storeToXML(out, "--Conf--");
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
@@ -145,7 +147,6 @@ class SingleService implements Closeable {
         input = new BufferedReader(
                 new InputStreamReader(
                         socket.getInputStream()));
-       // shuffler = new Shuffler();
         connectionState = CONNECTION_STATE.CONNECTED;
         desiredAction = DESIRED_ACTION.NONE;
     }
@@ -164,50 +165,59 @@ class SingleService implements Closeable {
                     break;
                 }
                 System.out.println("Client sent: " + str);
-                switch(connectionState)
-                {
-                    case CONNECTED:
-                        connectionState = CONNECTION_STATE.INITIALIZED;
-                        output.println("Please type 's' for sorting or 'f' for shuffling...");
-                        break;
-                    case INITIALIZED:
-                        if(str.length() > 1)
-                        {
-                            output.println("Wrong, you should type only one letter!");
+                if(str.toLowerCase().equals("-h")){
+                    output.println(" Usage of program: "
+                            + "Follow the steps that server gives you. "
+                            + "First chooose if you want to shuffle or sort. "
+                            + "After that type a sentence, and that's all ;)");
+                }
+                else{
+                    switch(connectionState)
+                    {
+                        case CONNECTED:
+                            connectionState = CONNECTION_STATE.INITIALIZED;
+                            output.println("Please type 's' for sorting or 'f' for shuffling...");
                             break;
-                        }   
-                        else if(!str.toLowerCase().equals("f") && !str.toLowerCase().equals("s"))
-                        {
-                             output.println("Wrong, 's' or 'f' only!");
-                             break;
-                        }
-                        else if("f".equals(str.toLowerCase()))
-                            desiredAction = DESIRED_ACTION.SHUFFLE;
-                        else desiredAction = DESIRED_ACTION.SORT;
-                        connectionState = CONNECTION_STATE.CHOSEN_OPERATION;
-                        output.println("Thank you! Now type a sentence...");
-                        break;
-                    case CHOSEN_OPERATION:
-                        if(desiredAction == DESIRED_ACTION.SORT && str.length() > 0)
-                            try {
-                                output.println("Generated sentence: " + shuffler.sortSentence(str.split(" ")));
-                        } catch (NoSentenceException ex) {
-                            output.println(ex.getMessage());
-                        }
-                        else if (desiredAction == DESIRED_ACTION.SHUFFLE && str.length() > 0)
-                            try {
-                                output.println("Generated sentence: " + shuffler.shuffleSentence(str.split(" ")));
-                        } catch (NoSentenceException ex) {
-                            output.println(ex.getMessage());
-                        }
-                        else output.println("Type in a valid sentence!");
-                        
-                        output.println("Press any key to refresh...");
-                        connectionState = CONNECTION_STATE.CONNECTED;
-                        desiredAction = DESIRED_ACTION.NONE;
-                        break;
-                    case HELP:
-                        break;
+                            
+                        case INITIALIZED:
+                            if(str.length() > 1)
+                            {
+                                output.println("Wrong, you should type only one letter!");
+                                break;
+                            }   
+                            else if(!str.toLowerCase().equals("f") && !str.toLowerCase().equals("s"))
+                            {
+                                 output.println("Wrong, 's' or 'f' only!");
+                                 break;
+                            }
+                            else if("f".equals(str.toLowerCase()))
+                                desiredAction = DESIRED_ACTION.SHUFFLE;
+                            else desiredAction = DESIRED_ACTION.SORT;
+                            
+                            connectionState = CONNECTION_STATE.CHOSEN_OPERATION;
+                            output.println("Thank you! Now type a sentence...");
+                            break;
+                            
+                        case CHOSEN_OPERATION:
+                            if(desiredAction == DESIRED_ACTION.SORT && str.length() > 0)
+                                try {
+                                    output.println(shuffler.sortSentence(str.split(" ")));
+                            } catch (NoSentenceException ex) {
+                                output.println(ex.getMessage());
+                            }
+                            else if (desiredAction == DESIRED_ACTION.SHUFFLE && str.length() > 0)
+                                try {
+                                    output.println(shuffler.shuffleSentence(str.split(" ")));
+                            } catch (NoSentenceException ex) {
+                                output.println(ex.getMessage());
+                            }
+                            else output.println("Type in a valid sentence!");
+
+                            output.println("Press any key to refresh...");
+                            connectionState = CONNECTION_STATE.CONNECTED;
+                            desiredAction = DESIRED_ACTION.NONE;
+                            break;
+                    }
                 }
             }
             System.out.println("closing...");
@@ -222,6 +232,10 @@ class SingleService implements Closeable {
         }
     }
 
+    /**
+     * Closes service session
+     * @throws IOException 
+     */
     @Override
     public void close() throws IOException {
         if (socket != null) {

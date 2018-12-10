@@ -3,9 +3,10 @@
  */
 package app.controller;
 
-import app.model.*;
+import app.client.WordsShuffleClient;
 import app.view.console.ConsolePrinter;
-import java.util.Objects;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 /**
  * Manager is the controller class from MVC, it stands for managing the two others
@@ -20,7 +21,7 @@ public class Manager {
     /** User desicion - sort or shuffle */
     private Character userDecision;
     /** Object that handles computions */
-    private Shuffler shuffler;
+    private WordsShuffleClient connector;
     /** Object that is to communicate with user */
     private ConsolePrinter printer;
     /** Sentence is the result of computing */
@@ -38,39 +39,46 @@ public class Manager {
     {
         this.context = args;
         printer = new ConsolePrinter(sortingIndicator, shufflingIndicator);
-        shuffler = new Shuffler();
+        try {
+            connector = new WordsShuffleClient();
+        } catch (UnknownHostException ex) {
+            printer.displayExceptionMessage(ex.getMessage());
+        } catch (IOException ex) {
+             printer.displayExceptionMessage(ex.getMessage());
+        }
     }
     
     /**
      * Core of the manager, handles information exchange between model and view
      */
     public void run(){
+        try {
+            connector.send("Hi");
+        } catch (IOException ex) {
+            printer.displayExceptionMessage(ex.getMessage());
+        }
         userDecision = Character.toLowerCase(printer.shuffleOrSort()); //scan users decision
         try{
-            if(Objects.equals(userDecision, printer.getShufflingIndicator())){
-                this.sentence = shuffler.shuffleSentence(context);
-             }
-            else if(Objects.equals(userDecision, printer.getSortingIndicator())){
-                this.sentence = shuffler.sortSentence(context);
-            }
+           connector.send(userDecision.toString());
         }
-        catch (NoSentenceException ex)
+        catch (IOException ex)
         {
             printer.displayExceptionMessage(ex.getMessage()); //provided data was empty
-            wereErrors = true;
         } 
-       
-        if(!wereErrors) //normal workflow
-            printer.displayResult(sentence);
-        else {
-            String[] newContext = printer.askForData(); //loop until user inserts any data
-            if(Objects.equals(userDecision, printer.getShufflingIndicator())){
-                this.sentence = shuffler.shuffleSentenceUnsafe(newContext);
-            }
-            else if(Objects.equals(userDecision, printer.getSortingIndicator())){
-                this.sentence = shuffler.sortSentenceUnsafe(newContext);   
-            }
-             printer.displayResult(sentence);
+        
+        if(this.context == null || this.context.length == 0)
+            this.context = printer.askForData();
+        
+        try {
+            printer.displayResult(connector.send(String.join((" "),this.context)));
+        } catch (IOException ex) {
+            printer.displayExceptionMessage(ex.getMessage());
+        }
+        
+        try {
+            connector.send("quit");
+        } catch (IOException ex) {
+           printer.displayExceptionMessage(ex.getMessage());
         }
             
     }

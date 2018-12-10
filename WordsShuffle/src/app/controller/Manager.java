@@ -24,7 +24,6 @@ public class Manager {
     private WordsShuffleClient connector;
     /** Object that is to communicate with user */
     private ConsolePrinter printer;
-    /** Sentence is the result of computing */
     
     /**
      * Constructor takes input data and initializes objects

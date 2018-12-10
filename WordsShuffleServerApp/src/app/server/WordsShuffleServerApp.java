@@ -48,8 +48,7 @@ public class WordsShuffleServerApp implements Closeable {
     /**
      * The main application method
      *
-     * @param args
-     * @params args all parametres are ignored
+     * @param args all parametres are ignored
      */
     public static void main(String args[]) {
 
@@ -70,7 +69,7 @@ public class WordsShuffleServerApp implements Closeable {
 
     /**
      * Closes server session
-     * @throws IOException 
+     * @throws IOException when input/output fails
      */
     @Override
     public void close() throws IOException {
@@ -234,7 +233,7 @@ class SingleService implements Closeable {
 
     /**
      * Closes service session
-     * @throws IOException 
+     * @throws IOException when input/output fails
      */
     @Override
     public void close() throws IOException {

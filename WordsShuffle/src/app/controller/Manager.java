@@ -7,8 +7,6 @@ import app.client.WordsShuffleClient;
 import app.view.console.ConsolePrinter;
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Manager is the controller class from MVC, it stands for managing the two others
@@ -27,9 +25,6 @@ public class Manager {
     /** Object that is to communicate with user */
     private ConsolePrinter printer;
     /** Sentence is the result of computing */
-    private String sentence;
-    /** True if caught an exception */
-    private boolean wereErrors;
     
     /**
      * Constructor takes input data and initializes objects

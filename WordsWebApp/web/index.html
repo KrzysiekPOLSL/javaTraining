@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+Main page of the app
+-->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>"Java and programming on Internet" - subject lab</title>
+    </head>
+    <body>
+        <h1>Shuffle or Sort your sentence</h1>
+
+        <hr>
+        <form action="HandleSentence" method="POST">
+            <p><input type=radio name=choice value=shuffle >Shuffle</p>
+            <p><input type=radio name=choice value=sort checked>Sort</p>
+            <p>Sentence:<input type=text size=70 name=sentence></p>
+            <input type="submit" value="run HandleSentence" />
+        </form>
+        <hr>
+        <form action="CookiesAccess">
+            <input type="submit" value="run Last sentence" />
+        </form>
+        <hr>
+    </body>
+</html>
